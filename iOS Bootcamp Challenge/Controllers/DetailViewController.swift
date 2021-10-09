@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
     }()
 
     lazy private var cardView: CardView = {
-        let title = "AbouT"
+        let title = "Stats"
         let cardView = CardView(card: Card(title: title, items: items))
         cardView.translatesAutoresizingMaskIntoConstraints = false
         return cardView

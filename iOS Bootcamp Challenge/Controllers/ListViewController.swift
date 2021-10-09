@@ -30,18 +30,8 @@ class ListViewController: UICollectionViewController {
 
     private var isFirstLauch: Bool = true
 
-    // TODO: Add a loading indicator when the app first launches and has no pokemons
-    
-   
-
-    private var shouldShowLoader: Bool = true
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setup()
-        setupUI()
-        
+    //MARK: - Loading indicator when the app first launches and has no pokemons.
+    func loadSpinner() {
         let child = SpinnerViewController()
 
            // add the spinner view controller
@@ -58,6 +48,16 @@ class ListViewController: UICollectionViewController {
                child.removeFromParent()
             
         }
+    }
+    private var shouldShowLoader: Bool = true
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setup()
+        setupUI()
+        
+        loadSpinner()
            
     }
 
