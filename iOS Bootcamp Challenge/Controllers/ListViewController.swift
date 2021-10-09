@@ -12,6 +12,10 @@ class ListViewController: UICollectionViewController {
 
     private var pokemons: [Pokemon] = []
     private var resultPokemons: [Pokemon] = []
+    var pokemonsData: [Pokemon] = []
+    var selectedPokemon: Pokemon?
+    
+    
 
     // TODO: Use UserDefaults to pre-load the latest search at start
 
@@ -101,16 +105,31 @@ class ListViewController: UICollectionViewController {
         cell.pokemon = resultPokemons[indexPath.item]
         return cell
     }
-
-    // MARK: - Navigation
-
-    // TODO: Handle navigation to detail view controller
+    //MARK: - Show detail from selected Pokemon with issue
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedPokemon = pokemonsData[indexPath.item]
+        performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
+    }
+    
+        
+    // MARK: - Handle navigation to detail view controller
+    func transitionToDetail() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let listVC = segue.destination as? DetailViewController {
+            listVC.pokemon = selectedPokemon
+//            listVC.selectedPokemon = selectedPokemon
+        }
+    }
 
     // MARK: - UI Hooks
 
     @objc func refresh() {
         shouldShowLoader = true
-        var pokemons: [Pokemon] = []
+        
         let dispatch = DispatchGroup()
 
         //MARK: - Waiting until the task finishes and update UI
@@ -121,12 +140,12 @@ class ListViewController: UICollectionViewController {
                 dispatch.enter()
                 PokeAPI.shared.get(url: "/pokemon/\(result.id)/", onCompletion: { (pokemon: Pokemon?) in
                     guard let pokemon = pokemon else { return }
-                    pokemons.append(pokemon)
+                    self.pokemonsData.append(pokemon)
                     dispatch.leave()
                 })
             }
             dispatch.notify(queue: .main){
-                self.pokemons = pokemons
+                self.pokemons = self.pokemonsData
                 self.didRefresh()
             }
         })

@@ -7,10 +7,17 @@
 
 import Foundation
 
+enum PokemonApiResponse {
+    case success(pokemon: [Pokemon])
+    case failed
+}
+
 class PokeAPI {
 
     static let shared = PokeAPI()
-    static let baseURL = "https://pokeapi.co/api/v2/"
+    static var baseURL = "https://pokeapi.co/api/v2/"
+    
+    
 
     //MARK: - Generic method to fetch data.
         @discardableResult
@@ -28,4 +35,5 @@ class PokeAPI {
                task?.resume()
                return task
            }
+    
 }

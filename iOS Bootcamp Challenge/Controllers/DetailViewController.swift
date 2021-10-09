@@ -8,7 +8,15 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var pokemon: Pokemon?
+    
+    
 
+    @IBOutlet weak var labelType: UILabel!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelOrder: UILabel!
+    @IBOutlet weak var imagePokemon: UIImageView!
+    
     static let segueIdentifier = "goDetailViewControllerSegue"
     private let margin: CGFloat = 20
 
@@ -18,8 +26,6 @@ class DetailViewController: UIViewController {
         gradient.frame = view.bounds
         return gradient
     }
-
-    var pokemon: Pokemon?
 
     lazy private var closeButon: UIButton = {
         let button = UIButton(type: .close)
@@ -63,7 +69,7 @@ class DetailViewController: UIViewController {
     }()
 
     lazy private var cardView: CardView = {
-        let title = "About"
+        let title = "AbouT"
         let cardView = CardView(card: Card(title: title, items: items))
         cardView.translatesAutoresizingMaskIntoConstraints = false
         return cardView
@@ -101,22 +107,37 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupUI()
+        
     }
 
     private func setup() {
         guard let pokemon = pokemon else { return }
-        nameLabel.text = pokemon.name.capitalized
-        idLabel.text = pokemon.formattedNumber()
+        labelName.text = pokemon.name.uppercased()
+        labelOrder.text = "#\(pokemon.id )"
 
         guard let gradient = gradient else { return }
         view.layer.insertSublayer(gradient, at: 0)
 
         if let image = pokemon.image, let url = URL(string: image) {
             imageView.kf.setImage(with: url)
+//            let url = URL(string: pokemon.officialArtWorkt )
         }
 
         guard let types = pokemon.types else { return }
         buildTypes(types)
+            //MARK: - Setting Labels
+//            let type = pokemon?.types?.first?.type?.name ?? ""
+//            labelName.text = pokemon?.name?.uppercased()
+//            labelOrder.text = "#\(pokemon?.order ?? 0)"
+//            labelType.text = type
+//            vStats.backgroundColor = UIColor.TypeColors.getColor(fromType: type)
+//            mainView.backgroundColor = UIColor.TypeColors.getColor(fromType: type)
+//            //MARK: - Setting up our image
+//            let url = URL(string: pokemon?.sprites?.frontDefault ?? "")
+//
+//            if let unwrappedURL = url {
+//                imgPokemon.sd_setImage(with: unwrappedURL, completed: nil)
+            
     }
 
     private func setupUI() {
