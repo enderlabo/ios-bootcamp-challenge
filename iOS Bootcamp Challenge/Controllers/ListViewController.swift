@@ -44,7 +44,7 @@ class ListViewController: UICollectionViewController {
 
            // wait two seconds to simulate some work happening
 //        if(pokemons.count > 0){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.4) {
                child.willMove(toParent: nil)
                child.view.removeFromSuperview()
                child.removeFromParent()
@@ -61,6 +61,7 @@ class ListViewController: UICollectionViewController {
         setupUI()
         loadSpinner()
            
+        
     }
 
     // MARK: Setup
@@ -141,23 +142,27 @@ class ListViewController: UICollectionViewController {
     }
     //MARK: - Show detail from selected Pokemon with issue
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedPokemon = resultPokemons[indexPath.item]
+        
+        selectedPokemon = resultPokemons[indexPath.row]
+        
         performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
     }
     
+   
+    
         
     // MARK: - Handle navigation to detail view controller
-    func transitionToDetail() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
+        func transitionToDetail() {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
+            }
         }
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let listVC = segue.destination as? DetailViewController {
-            listVC.pokemon = selectedPokemon
-//            listVC.selectedPokemon = selectedPokemon
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let listVC = segue.destination as? DetailViewController {
+                listVC.pokemon = selectedPokemon
+    //            listVC.selectedPokemon = selectedPokemon
+            }
         }
-    }
 
     // MARK: - UI Hooks
 
@@ -180,6 +185,7 @@ class ListViewController: UICollectionViewController {
             }
             dispatch.notify(queue: .main){
                 self.pokemons = self.pokemonsData
+                
                 self.didRefresh()
             }
         })
@@ -195,7 +201,7 @@ class ListViewController: UICollectionViewController {
 
         refreshControl.endRefreshing()
 
-        filterContentForSearchText("")
+        filterContentForSearchText( "")
     }
 
 }

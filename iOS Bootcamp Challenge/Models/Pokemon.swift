@@ -61,17 +61,47 @@ struct Pokemon: Decodable, Equatable {
         let other = try sprites.nestedContainer(keyedBy: CodingKeys.self, forKey: .other)
         let officialArtWork = try other.nestedContainer(keyedBy: CodingKeys.self, forKey: .officialArtwork)
         self.image = try? officialArtWork.decode(String.self, forKey: .frontDefault)
+        
+        
 
         // TODO: Decode list of types & abilities
 
+//        self.types = try container.decode([TypeElement].self, forKey: .types)
         self.types = []
         self.abilities = []
+//        self.abilities = try container.decode([Ability].self, forKey: .abilities)
 
         self.weight = try container.decode(Float.self, forKey: .weight)
         self.baseExperience = try container.decode(Int.self, forKey: .baseExperience)
     }
+    
+    // MARK: - Ability
+    struct Ability: Codable {
+        let ability: Species?
+        let isHidden: Bool?
+        let slot: Int?
+
+        enum CodingKeys: String, CodingKey {
+            case ability
+            case isHidden = "is_hidden"
+            case slot
+        }
+    }
+
+    // MARK: - Species
+    struct Species: Codable {
+        let name: String?
+        let url: String?
+    }
+
+    // MARK: - TypeElement
+    struct TypeElement: Codable {
+        let slot: Int?
+        let type: Species?
+    }
 
 }
+
 
 extension Pokemon {
 

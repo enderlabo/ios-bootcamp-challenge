@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var pokemon: Pokemon?
-    var selectPokemon: [Pokemon]?
+    var selectPokemon: Pokemon?
     
     
 
@@ -108,7 +108,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupUI()
-        
+        selectPokemon = pokemon
     }
 
     private func setup() {
