@@ -17,6 +17,7 @@
 		3C56348027041BBB00EB996C /* UserDefaults+CustomKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56347F27041BBB00EB996C /* UserDefaults+CustomKeys.swift */; };
 		6471E9062710C8E8002E82D5 /* SVProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C563479270415F800EB996C /* SVProgressHUD.xcframework */; };
 		6471E90A27110E4E002E82D5 /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6471E90927110E4E002E82D5 /* CollectionViewExtension.swift */; };
+		6471E90C27114742002E82D5 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6471E90B27114742002E82D5 /* SpinnerViewController.swift */; };
 		C36BFB582700DCCE00F8CCAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB572700DCCE00F8CCAC /* AppDelegate.swift */; };
 		C36BFB5A2700DCCE00F8CCAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BFB592700DCCE00F8CCAC /* SceneDelegate.swift */; };
 		C36BFB5F2700DCCE00F8CCAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36BFB5D2700DCCE00F8CCAC /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		3C563479270415F800EB996C /* SVProgressHUD.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SVProgressHUD.xcframework; path = Carthage/Build/SVProgressHUD.xcframework; sourceTree = "<group>"; };
 		3C56347F27041BBB00EB996C /* UserDefaults+CustomKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CustomKeys.swift"; sourceTree = "<group>"; };
 		6471E90927110E4E002E82D5 /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
+		6471E90B27114742002E82D5 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		C36BFB542700DCCE00F8CCAC /* iOS Bootcamp Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Bootcamp Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36BFB572700DCCE00F8CCAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C36BFB592700DCCE00F8CCAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				3C56347E27041B6D00EB996C /* Extensions */,
 				C38493B32704A85E00386A1B /* SearchBar.swift */,
 				3C56346C270273F700EB996C /* PokemonColor.swift */,
+				6471E90B27114742002E82D5 /* SpinnerViewController.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				C36BFB922700ED8400F8CCAC /* PokeCell.swift in Sources */,
 				C36BFB982700F07900F8CCAC /* Pokemon.swift in Sources */,
 				C36BFB952700EDD900F8CCAC /* ColumnFlowLayout.swift in Sources */,
+				6471E90C27114742002E82D5 /* SpinnerViewController.swift in Sources */,
 				C3C4F9182702D65300136BFB /* PokemonList.swift in Sources */,
 				C36BFB622700DCCE00F8CCAC /* iOS_Bootcamp_Challenge.xcdatamodeld in Sources */,
 				C36BFB9E270102C900F8CCAC /* PokeAPI.swift in Sources */,

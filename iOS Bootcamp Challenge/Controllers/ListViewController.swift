@@ -31,6 +31,8 @@ class ListViewController: UICollectionViewController {
     private var isFirstLauch: Bool = true
 
     // TODO: Add a loading indicator when the app first launches and has no pokemons
+    
+   
 
     private var shouldShowLoader: Bool = true
 
@@ -39,6 +41,24 @@ class ListViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         setup()
         setupUI()
+        
+        let child = SpinnerViewController()
+
+           // add the spinner view controller
+           addChild(child)
+           child.view.frame = view.frame
+           view.addSubview(child.view)
+           child.didMove(toParent: self)
+
+           // wait two seconds to simulate some work happening
+//        if(pokemons.count > 0){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+               child.willMove(toParent: nil)
+               child.view.removeFromSuperview()
+               child.removeFromParent()
+            
+        }
+           
     }
 
     // MARK: Setup
