@@ -14,6 +14,7 @@ class ListViewController: UICollectionViewController {
     private var resultPokemons: [Pokemon] = []
     var pokemonsData: [Pokemon] = []
     var selectedPokemon: Pokemon?
+    var filteredData: [Pokemon] = []
     
     
 
@@ -25,6 +26,7 @@ class ListViewController: UICollectionViewController {
         let searchController = SearchBar("Search a pokemon", delegate: nil)
         searchController.text = latestSearch
         searchController.showsCancelButton = !searchController.isSearchBarEmpty
+        
         return searchController
     }()
 
@@ -54,9 +56,9 @@ class ListViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+//        searchBar.delegate = self
         setup()
         setupUI()
-        
         loadSpinner()
            
     }
@@ -111,6 +113,18 @@ class ListViewController: UICollectionViewController {
     }
 
     // TODO: Implement the SearchBar
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText == "" {
+//            filteredData = pokemonsData
+//        } else {
+//            for pokemo  in pokemonsData {
+//                if pokemo.lowercased().contains(searchBar.lowercase()) {
+//                    filteredData.append(pokemo)
+//                }
+//            }
+//        }
+//        self.collectionView.reloadData()
+//    }
 
     // MARK: - UICollectionViewDataSource
 
