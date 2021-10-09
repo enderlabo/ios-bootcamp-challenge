@@ -141,7 +141,7 @@ class ListViewController: UICollectionViewController {
     }
     //MARK: - Show detail from selected Pokemon with issue
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedPokemon = pokemonsData[indexPath.item]
+        selectedPokemon = resultPokemons[indexPath.item]
         performSegue(withIdentifier: "goDetailViewControllerSegue", sender: self)
     }
     

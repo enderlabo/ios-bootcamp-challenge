@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var pokemon: Pokemon?
+    var selectPokemon: [Pokemon]?
     
     
 
